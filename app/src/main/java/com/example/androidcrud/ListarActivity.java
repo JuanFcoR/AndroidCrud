@@ -33,9 +33,11 @@ public class ListarActivity extends AppCompatActivity implements Callback<respue
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         iniciarControles();
         Call<respuesta> Lista = MyApiAdapter.getApiService().getCervezas();
         Lista.enqueue(this);
+
 
     }
     private void iniciarControles()

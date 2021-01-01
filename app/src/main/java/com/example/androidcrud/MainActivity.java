@@ -49,21 +49,17 @@ public class MainActivity extends AppCompatActivity {
         edMarca=findViewById(R.id.edMarca);
 
         int ID= getIntent().getIntExtra("valorId",0);
-        int accion=getIntent().getIntExtra("accion",0);
-        if(accion!=0) {
+        if(ID!=0) {
+            toast("Cerveza Encontrada");
             find(ID);
-
         }
         else
             limpiar();
-
-
     }
+
     public void toast(String val) {
         Toast.makeText(this, val, Toast.LENGTH_SHORT).show();
     }
-
-
 
     private void limpiar(){
         oCerveza= new cerveza();
@@ -71,11 +67,8 @@ public class MainActivity extends AppCompatActivity {
         edNombre.setText("");
         edMarca.setText("");
     }
-    private boolean validar()
-    {
+    private boolean validar() {
         boolean paso = true;
-
-
         try{
             Integer.parseInt(edId.getText().toString());
             paso=true;
@@ -88,9 +81,6 @@ public class MainActivity extends AppCompatActivity {
             paso=false;
             toast("Nombre y/o marca no pueden estar vacios");
         }
-
-
-
         return paso;
     }
 
@@ -141,17 +131,47 @@ public class MainActivity extends AppCompatActivity {
                 toast(t.getMessage());
             }
         });
+    }
 
+    boolean validarId() {
+        boolean paso=false;
+        String miId=edId.getText().toString();
+        boolean tp = tryParseInt(miId);
+        try{
+            if((Integer.parseInt(miId)!=0||(edId.getText().toString()!=null))&&tp) {
+                find(Integer.parseInt(edId.getText().toString()));
+                paso = true;
+            }
+            else{
+                toast("El dato es invalido");
+            }
+        }catch (Exception nfe){
+            toast(nfe.getMessage());
+        }
+        return paso;
+    }
 
-        //return cerveza;
+    boolean tryParseInt(String value) {
+        try {
+            Integer.parseInt(value);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
     //Los metodos del Crud Correspondientes a cada Boton
-    public void Guardar(View view){save();}
-    public void Buscar(View view)
-    {
-        find(Integer.parseInt(edId.getText().toString()));
+    public void Guardar(View view){
+        if(validar())
+            save();
     }
-    public void Eliminar(View view){ delete(Integer.parseInt(edId.getText().toString()));}
+    public void Buscar(View view) {
+        if(validarId())
+            find(Integer.parseInt(edId.getText().toString()));
+    }
+    public void Eliminar(View view){
+        if(validarId())
+            delete(Integer.parseInt(edId.getText().toString()));
+    }
     public void Listar(View view){
         Intent intent = new Intent(this,ListarActivity.class);
         startActivity(intent);
@@ -180,21 +200,16 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             }
-
             @Override
             public void onFailure(Call<respuesta> call, Throwable t) {
                 toast(t.getMessage());
             }
         });
-
     }
 
-    private void delete(int id)
-    {
-
+    private void delete(int id) {
         //Se crea una clase call
         Call<respuesta> Lista = MyApiAdapter.getApiService().delete(String.valueOf(id));
-
         Lista.enqueue(new Callback<respuesta>() {
             @Override
             public void onResponse(Call<respuesta> call, Response<respuesta> response) {

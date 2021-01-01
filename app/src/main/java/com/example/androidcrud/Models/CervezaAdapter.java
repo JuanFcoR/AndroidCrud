@@ -27,7 +27,6 @@ public class CervezaAdapter extends RecyclerView.Adapter<CervezaAdapter.CervezaV
             cerveza cerv = new cerveza();
             cerv.setNombre("temp");
             cerv.setMarca("temp");
-
             Lista.add(cerv);
         }
 
@@ -93,6 +92,7 @@ public class CervezaAdapter extends RecyclerView.Adapter<CervezaAdapter.CervezaV
             btAEditar = (Button)itemView.findViewById(R.id.btAEditar);
 
             context =itemView.getContext();
+            
         }
 
         private void bindCerveza(cerveza cerveza) {
@@ -109,9 +109,6 @@ public class CervezaAdapter extends RecyclerView.Adapter<CervezaAdapter.CervezaV
         public void onClick(View v) {
             Intent intent = new Intent(context, MainActivity.class);
             intent.putExtra("valorId",Integer.parseInt(tvId.getText().toString()));
-            int accion=0;
-
-            intent.putExtra("accion",accion);
             context.startActivity(intent);
         }
     }

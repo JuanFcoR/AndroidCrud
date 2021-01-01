@@ -27,7 +27,7 @@ public interface MyApiService {
     @PUT("api/Cerveza")
     public Call<respuesta> edit(@Body cerveza cerv);
 
-    @DELETE("api/Cerveza")
+    @DELETE("api/Cerveza/{Id}")
     public Call<respuesta> delete(@Path("Id") String Id);
 
 

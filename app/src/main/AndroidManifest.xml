@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidCrud"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ListarActivity"></activity>
+        <activity android:name=".ListarActivity"
+            android:parentActivityName=".MainActivity">
+            ></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
