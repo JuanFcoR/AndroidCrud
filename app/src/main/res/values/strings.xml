@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">AndroidCrud</string>
+    <string name="ceveza">Cerveza</string>
+    <string name="id">Id</string>
+    <string name="nombre">Nombre</string>
+    <string name="marca">Marca</string>
+    <string name="nuevo">Nuevo</string>
+    <string name="guardar">Guardar</string>
+    <string name="buscar">Buscar</string>
+    <string name="listar">Listar</string>
+    <string name="eliminar">Eliminar</string>
+    <string name="editar">Editar</string>
+    <string name="titulo_id">ID</string>
+    <string name="titulo_nombre">Nombre</string>
+    <string name="titulo_marca">Marca</string>
+</resources>
