@@ -13,4 +13,6 @@
     <string name="titulo_id">ID</string>
     <string name="titulo_nombre">Nombre</string>
     <string name="titulo_marca">Marca</string>
+    <string name="app_label">Buscar</string>
+    <string name ="search_hint">Buscar</string>
 </resources>

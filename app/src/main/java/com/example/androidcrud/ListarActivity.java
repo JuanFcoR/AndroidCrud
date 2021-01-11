@@ -1,6 +1,7 @@
 package com.example.androidcrud;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,11 +23,12 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ListarActivity extends AppCompatActivity implements Callback<respuesta> {
+public class ListarActivity extends AppCompatActivity implements Callback<respuesta>, SearchView.OnQueryTextListener {
     RecyclerView rvCervezas;
     CervezaAdapter adapter;
     FloatingActionButton fabAdd;
-    private final String baseUrl="https://webserviceblazorcrud.azurewebsites.net/";
+    SearchView svSearch;
+    private final String baseUrl="https://webserviceblazorcrud20210104011621.azurewebsites.net/";
     respuesta respuestas;
 
     @Override
@@ -43,6 +45,7 @@ public class ListarActivity extends AppCompatActivity implements Callback<respue
     private void iniciarControles()
     {
         rvCervezas = (RecyclerView) findViewById(R.id.rvCervezas);
+        svSearch = (SearchView) findViewById(R.id.svSearch);
         //fabAdd = (FloatingActionButton) findViewById(R.id.fabAdd);
     }
 
@@ -67,9 +70,23 @@ public class ListarActivity extends AppCompatActivity implements Callback<respue
             Toast.makeText(ListarActivity.this, "hubo un error", Toast.LENGTH_SHORT).show();
         }
     }
+    public void toast(String valor)
+    {
+        Toast.makeText(this, valor, Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     public void onFailure(Call<respuesta> call, Throwable t) {
+        toast(t.getMessage());
+    }
 
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        return false;
     }
 }

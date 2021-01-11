@@ -15,6 +15,9 @@ import retrofit2.http.Path;
 
 public interface MyApiService {
 
+    @DELETE("api/Cerveza/{param}/{criterio}")
+    public Call<respuesta> getAvanzado(@Path("param") String param, String criteriol);
+
     @GET("api/Cerveza/")
     public Call<respuesta> getCervezas();
 
@@ -29,6 +32,5 @@ public interface MyApiService {
 
     @DELETE("api/Cerveza/{Id}")
     public Call<respuesta> delete(@Path("Id") String Id);
-
-
+    
 }
