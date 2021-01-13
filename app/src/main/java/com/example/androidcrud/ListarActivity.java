@@ -57,7 +57,7 @@ public class ListarActivity extends AppCompatActivity implements Callback<respue
             LinearLayoutManager llm = new LinearLayoutManager(getApplicationContext());
             rvCervezas.setLayoutManager(llm);
 
-            adapter = new CervezaAdapter(laRespuesta.getData());
+            adapter = new CervezaAdapter(laRespuesta.getCervezaData());
             rvCervezas.setAdapter(adapter);
 
             DividerItemDecoration itemDecoration = new DividerItemDecoration(rvCervezas.getContext(),llm.getOrientation());

@@ -12,9 +12,13 @@ public class respuesta {
     @SerializedName("mensaje")
     @Expose
     private String mensaje;
-    @SerializedName("data")
+    @SerializedName("cervezaData")
     @Expose
-    private List<cerveza> data = null;
+    private List<cerveza> cervezaData = null;
+
+    @SerializedName("productoData")
+    @Expose
+    private List<producto> productoData = null;
 
     public final int getExito() {
         return exito;
@@ -32,12 +36,20 @@ public class respuesta {
         this.mensaje = mensaje;
     }
 
-    public List<cerveza>  getData() {
-        return data;
+    public List<cerveza>  getCervezaData() {
+        return cervezaData;
     }
 
-    public final void setData(List<cerveza> data) {
-        this.data = data;
+    public final void setCervezaData(List<cerveza> data) {
+        this.cervezaData = data;
+    }
+
+    public List<producto>  getProductoData() {
+        return productoData;
+    }
+
+    public final void setProductoData(List<producto> data) {
+        this.productoData = data;
     }
 
     public respuesta()

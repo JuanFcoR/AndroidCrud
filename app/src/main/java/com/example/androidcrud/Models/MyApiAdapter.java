@@ -24,7 +24,7 @@ public class MyApiAdapter {
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
         httpClient.addInterceptor(logging);
 
-        String baseUrl = "https://webserviceblazorcrud.azurewebsites.net/";
+        String baseUrl = "https://webserviceblazorcrud20210104011621.azurewebsites.net/";
 
         if (API_SERVICE == null) {
             Retrofit retrofit = new Retrofit.Builder()
